@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aetherlex Prospect Hunter</title>
+    <style>
+      :root {
+        --ink: #17191e;
+        --muted: #5b6471;
+        --paper: #fffdf9;
+        --panel: rgba(255, 255, 255, 0.92);
+        --gold: #d19b5d;
+        --gold-deep: #8e6031;
+        --teal: #1d8e87;
+        --rose: #e8b9aa;
+        --line: rgba(23, 25, 30, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top right, rgba(209, 155, 93, 0.26), transparent 34%),
+          radial-gradient(circle at bottom left, rgba(29, 142, 135, 0.12), transparent 30%),
+          linear-gradient(180deg, #fbf6ef 0%, #f5efe7 100%);
+        padding: 20px;
+      }
+
+      .shell {
+        width: min(860px, 100%);
+        margin: 0 auto;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 24px 70px rgba(23, 25, 30, 0.12);
+      }
+
+      .hero {
+        padding: 26px 26px 22px;
+        background:
+          linear-gradient(135deg, rgba(209, 155, 93, 0.22), rgba(142, 96, 49, 0.08)),
+          linear-gradient(180deg, #fffdf9, #f7f0e7);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.74);
+        border: 1px solid rgba(23, 25, 30, 0.08);
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 16px 0 10px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2rem, 5vw, 3.4rem);
+        line-height: 0.98;
+      }
+
+      .subhead {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .meta {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 14px;
+        padding: 22px 26px 10px;
+      }
+
+      .meta-block {
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+      }
+
+      .meta-label {
+        font-size: 0.76rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      .meta-value {
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.35;
+      }
+
+      .body {
+        padding: 8px 26px 26px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        padding: 0 18px;
+        border-radius: 16px;
+        text-decoration: none;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        background: #fff;
+        font-weight: 700;
+      }
+
+      .button.primary {
+        color: #fff;
+        border-color: transparent;
+        background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+      }
+
+      .button.secondary {
+        background: linear-gradient(135deg, rgba(29, 142, 135, 0.16), rgba(29, 142, 135, 0.08));
+      }
+
+      .button[aria-disabled="true"] {
+        opacity: 0.45;
+        pointer-events: none;
+      }
+
+      .phone {
+        margin: 18px 0 10px;
+        font-size: clamp(2rem, 8vw, 4.2rem);
+        font-weight: 800;
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+      }
+
+      .score-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 82px;
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 999px;
+        background: rgba(23, 25, 30, 0.08);
+        font-weight: 800;
+      }
+
+      .note-list {
+        margin: 14px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .compose {
+        margin-top: 18px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.92);
+        border-radius: 22px;
+        overflow: hidden;
+      }
+
+      .compose-head {
+        padding: 14px 18px;
+        background: rgba(232, 185, 170, 0.16);
+        border-bottom: 1px solid var(--line);
+        font-weight: 700;
+      }
+
+      .compose-body {
+        padding: 18px;
+      }
+
+      .compose-label {
+        font-size: 0.76rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      .compose-value,
+      pre {
+        margin: 0 0 16px;
+        white-space: pre-wrap;
+        word-break: break-word;
+        line-height: 1.6;
+      }
+
+      .link-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .link-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 40px;
+        padding: 0 12px;
+        border-radius: 999px;
+        text-decoration: none;
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid var(--line);
+      }
+
+      .foot {
+        padding: 0 26px 26px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <section class="card" id="app"></section>
+    </div>
+
+    <script>
+      function decodeBase64Json(value) {
+        if (!value) return null;
+        try {
+          return JSON.parse(decodeURIComponent(escape(atob(value))));
+        } catch (_error) {
+          return null;
+        }
+      }
+
+      function param(name) {
+        return new URLSearchParams(window.location.search).get(name);
+      }
+
+      function mailtoHref(profile) {
+        const email = profile.email || "";
+        const subject = profile.email_draft?.subject || "";
+        const body = profile.email_draft?.body || "";
+        return `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      }
+
+      function copyText(text) {
+        if (!navigator.clipboard || !text) return;
+        navigator.clipboard.writeText(text);
+      }
+
+      function linkChip(label, url) {
+        if (!url) return "";
+        return `<a class="link-chip" href="${url}" target="_blank" rel="noreferrer">${label}</a>`;
+      }
+
+      function actionButton(label, href, className, disabled) {
+        if (disabled) {
+          return `<span class="button ${className || ""}" aria-disabled="true">${label}</span>`;
+        }
+        return `<a class="button ${className || ""}" href="${href}" target="_blank" rel="noreferrer">${label}</a>`;
+      }
+
+      const state = decodeBase64Json(param("data")) || {};
+      const profile = state.profile || {};
+      const mode = param("mode") || state.mode || "decision";
+      const app = document.getElementById("app");
+      const score = profile.score ?? "--";
+      const reasons = Array.isArray(profile.score_reasoning) ? profile.score_reasoning : [];
+      const phoneDisplay = profile.phone || "Phone unavailable";
+      const emailDisplay = profile.email || "Email unavailable";
+      const website = profile.website_url || "";
+      const mapsUrl = profile.google_maps_url || "";
+      const socialProfiles = Array.isArray(profile.social_profiles) ? profile.social_profiles : [];
+      const socialChips = socialProfiles
+        .slice(0, 4)
+        .map((item) => linkChip(item.platform || "Social", item.url))
+        .join("");
+
+      function renderDecision() {
+        return `
+          <div class="hero">
+            <div class="eyebrow">Aetherlex Prospect Hunter</div>
+            <h1>${profile.canonical_name || "Prospect ready"}</h1>
+            <p class="subhead">Use the quick action below or reply in chat with "call now" or "send email".</p>
+          </div>
+          <div class="meta">
+            <div class="meta-block">
+              <div class="meta-label">Prospect Score</div>
+              <div class="meta-value"><span class="score-pill">${score}/10</span></div>
+            </div>
+            <div class="meta-block">
+              <div class="meta-label">Vertical</div>
+              <div class="meta-value">${profile.vertical || "Unavailable"}</div>
+            </div>
+            <div class="meta-block">
+              <div class="meta-label">Phone</div>
+              <div class="meta-value">${phoneDisplay}</div>
+            </div>
+            <div class="meta-block">
+              <div class="meta-label">Email</div>
+              <div class="meta-value">${emailDisplay}</div>
+            </div>
+          </div>
+          <div class="body">
+            <div class="actions">
+              ${actionButton("Call now", profile.phone ? `tel:${profile.phone}` : "#", "primary", !profile.phone)}
+              ${actionButton("Open email draft", mailtoHref(profile), "secondary", !profile.email_draft?.subject)}
+              ${actionButton("Website", website, "", !website)}
+              ${actionButton("Google Maps", mapsUrl, "", !mapsUrl)}
+            </div>
+            ${reasons.length ? `<ul class="note-list">${reasons.map((reason) => `<li>${reason}</li>`).join("")}</ul>` : ""}
+            ${socialChips ? `<div class="link-list">${socialChips}</div>` : ""}
+          </div>
+          <div class="foot">Built for fast field prospecting across South Jersey and the Philadelphia metro.</div>
+        `;
+      }
+
+      function renderCall() {
+        return `
+          <div class="hero">
+            <div class="eyebrow">Call Prospect</div>
+            <h1>${profile.canonical_name || "Prospect"}</h1>
+            <p class="subhead">${profile.primary_location || profile.service_area || "Public contact details surfaced from live research."}</p>
+          </div>
+          <div class="body">
+            <div class="phone">${phoneDisplay}</div>
+            <div class="actions">
+              ${actionButton("Tap to dial", profile.phone ? `tel:${profile.phone}` : "#", "primary", !profile.phone)}
+              ${actionButton("Website", website, "", !website)}
+              ${actionButton("Google Maps", mapsUrl, "", !mapsUrl)}
+            </div>
+            ${reasons.length ? `<ul class="note-list">${reasons.map((reason) => `<li>${reason}</li>`).join("")}</ul>` : ""}
+          </div>
+          <div class="foot">If no number was found, use the website or maps link to verify the contact path.</div>
+        `;
+      }
+
+      function renderEmail() {
+        return `
+          <div class="hero">
+            <div class="eyebrow">Email Prospect</div>
+            <h1>${profile.canonical_name || "Prospect"}</h1>
+            <p class="subhead">Drafted in Aetherlex's outbound voice with a single soft CTA for a free AI Revenue Audit.</p>
+          </div>
+          <div class="meta">
+            <div class="meta-block">
+              <div class="meta-label">To</div>
+              <div class="meta-value">${emailDisplay}</div>
+            </div>
+            <div class="meta-block">
+              <div class="meta-label">Subject</div>
+              <div class="meta-value">${profile.email_draft?.subject || "Unavailable"}</div>
+            </div>
+          </div>
+          <div class="body">
+            <div class="actions">
+              ${actionButton("Open in mail app", mailtoHref(profile), "primary", !profile.email_draft?.subject)}
+              <button class="button" type="button" id="copy-subject">Copy subject</button>
+              <button class="button secondary" type="button" id="copy-email">Copy email</button>
+            </div>
+            <div class="compose">
+              <div class="compose-head">Outreach Draft</div>
+              <div class="compose-body">
+                <div class="compose-label">Subject</div>
+                <p class="compose-value">${profile.email_draft?.subject || "Unavailable"}</p>
+                <div class="compose-label">Body</div>
+                <pre>${profile.email_draft?.body || "Unavailable"}</pre>
+              </div>
+            </div>
+            ${socialChips ? `<div class="link-list">${socialChips}</div>` : ""}
+          </div>
+          <div class="foot">If no public email was found, the draft is still ready to paste into a contact form, LinkedIn DM, or manual lookup workflow.</div>
+        `;
+      }
+
+      app.innerHTML =
+        mode === "call" ? renderCall() :
+        mode === "email" ? renderEmail() :
+        renderDecision();
+
+      const copySubjectButton = document.getElementById("copy-subject");
+      const copyEmailButton = document.getElementById("copy-email");
+      if (copySubjectButton) {
+        copySubjectButton.addEventListener("click", () => copyText(profile.email_draft?.subject || ""));
+      }
+      if (copyEmailButton) {
+        copyEmailButton.addEventListener("click", () => copyText(profile.email_draft?.body || ""));
+      }
+    </script>
+  </body>
+</html>

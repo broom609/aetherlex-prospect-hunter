@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aetherlex Prospect Hunter</title>
+    <style>
+      :root {
+        --ink: #16181d;
+        --mist: #f6f3ee;
+        --panel: #ffffff;
+        --gold: #cb9659;
+        --gold-deep: #9b6c35;
+        --line: rgba(22, 24, 29, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top right, rgba(203, 150, 89, 0.24), transparent 32%),
+          linear-gradient(180deg, #fdf7ef 0%, var(--mist) 100%);
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      main {
+        width: min(760px, 100%);
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 32px;
+        box-shadow: 0 24px 70px rgba(22, 24, 29, 0.12);
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 1.05;
+      }
+
+      p {
+        line-height: 1.6;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 999px;
+        text-decoration: none;
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+
+      .button.primary {
+        background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+        color: #fff;
+        border-color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Aetherlex Prospect Hunter</h1>
+      <p>
+        This repository hosts a Google AI Edge Gallery Agent Skill for Gemma 4. Import the repo root URL
+        into the app, then provide a Gemini API key when prompted.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="./SKILL.md">Open SKILL.md</a>
+        <a class="button" href="https://github.com/broom609/aetherlex-prospect-hunter">GitHub Repo</a>
+        <a class="button" href="./README.md">Read README</a>
+      </div>
+    </main>
+  </body>
+</html>
