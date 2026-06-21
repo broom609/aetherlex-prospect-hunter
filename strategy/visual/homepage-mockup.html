@@ -119,6 +119,54 @@
   footer h5{color:#fff;font-size:.95rem;margin-bottom:12px}
   footer a{color:#9fb3cc;text-decoration:none;display:block;margin-bottom:7px}
   footer .nap{color:#cdd9ea}
+
+  /* sticky mobile call bar */
+  .mobile-callbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:50;border-top:1px solid rgba(0,0,0,.08);box-shadow:0 -4px 16px rgba(0,0,0,.14)}
+  .mobile-callbar a{flex:1;text-align:center;padding:15px 8px;font-weight:800;text-decoration:none;font-size:1rem}
+  .cb-call{background:var(--red);color:#fff}
+  .cb-quote{background:var(--gold);color:#1a1a1a}
+
+  @media (max-width:760px){
+    .util .wrap{flex-direction:column;gap:3px;align-items:flex-start;font-size:.72rem;padding:8px 18px;line-height:1.4}
+    .wrap{padding:0 18px}
+    header .wrap{padding:12px 18px}
+    .logo{font-size:1.02rem;gap:8px}
+    .logo .mark{width:32px;height:32px}
+    nav{gap:10px}
+    nav a:not(.btn){display:none}
+    nav .btn-quote{padding:9px 13px;font-size:.82rem}
+    .hphone{font-size:.92rem}
+    .hero .wrap{grid-template-columns:1fr;gap:24px;padding:32px 18px 38px}
+    .hero h1{font-size:1.85rem}
+    .hero p.sub{font-size:1rem}
+    .eyebrow{font-size:.72rem}
+    .hero-cta{flex-direction:column}
+    .hero-cta .btn{width:100%;justify-content:center}
+    .quote{padding:20px}
+    .valbar .wrap{grid-template-columns:1fr 1fr;gap:16px;padding:18px}
+    section.blk{padding:36px 0}
+    .sec-h{margin-bottom:24px}
+    .sec-h h2{font-size:1.5rem}
+    .cards{grid-template-columns:1fr;gap:14px}
+    .steps{grid-template-columns:1fr 1fr;gap:12px}
+    .revs{grid-template-columns:1fr;gap:14px}
+    .areas .wrap{grid-template-columns:1fr;gap:24px;padding:36px 18px}
+    .areas h2{font-size:1.5rem}
+    .mapbox{height:220px}
+    .ctaband{padding:38px 18px}
+    .ctaband h2{font-size:1.5rem}
+    .ctaband .row{flex-direction:column}
+    .ctaband .row .btn{width:100%;justify-content:center}
+    footer{padding:34px 18px 18px}
+    footer .grid{grid-template-columns:1fr 1fr;gap:22px}
+    body{padding-bottom:60px}
+    .mobile-callbar{display:flex}
+  }
+  @media (max-width:420px){
+    .valbar .wrap{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    footer .grid{grid-template-columns:1fr}
+  }
 </style>
 </head>
 <body>
@@ -262,6 +310,11 @@
   <div><h5>Service Areas</h5><a href="city-page-mockup.html">Newark, NJ</a><a href="city-page-mockup.html">East Orange, NJ</a><a href="city-page-mockup.html">Montclair, NJ</a><a href="city-page-mockup.html">Harrison, NJ</a></div>
   <div><h5>Company</h5><a href="homepage-mockup.html">About</a><a href="homepage-mockup.html">Industries Served</a><a href="homepage-mockup.html">Contact</a><a href="homepage-mockup.html">Privacy &amp; SMS/Call Consent</a></div>
 </div></footer>
+
+<div class="mobile-callbar">
+  <a class="cb-call" href="tel:+19735550142">📞 Call Now</a>
+  <a class="cb-quote" href="#">Free Quote</a>
+</div>
 
 </body>
 </html>
