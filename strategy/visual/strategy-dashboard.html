@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Local Lead-Gen Strategy — Visual Dashboard</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--navy:#0f2740;--blue:#1f6feb;--ink:#1a2230;--slate:#5a6a82;--line:#e3e8ef;--bg:#f5f7fb;--gold:#f2b134;--green:#1f9d57;--red:#e23b3b;--purple:#7c5cff}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+  .page{max-width:1180px;margin:0 auto;padding:34px}
+  .top{background:linear-gradient(120deg,var(--navy),#1d4e82);color:#fff;border-radius:18px;padding:30px 34px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+  .top h1{font-size:1.9rem;letter-spacing:-.5px}
+  .top p{color:#cdd9ea;margin-top:6px;font-size:1rem}
+  .top .pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:10px 16px;border-radius:12px;text-align:center}
+  .top .pill b{display:block;font-size:1.5rem;color:var(--gold)}
+  .top .pill span{font-size:.78rem;color:#dbe6f5}
+
+  .grid{display:grid;gap:18px;margin-top:18px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 6px 20px rgba(15,39,64,.04)}
+  .card h2{font-size:1.12rem;color:var(--navy);display:flex;align-items:center;gap:9px;margin-bottom:14px}
+  .card h2 .ic{width:30px;height:30px;border-radius:8px;background:#eaf2ff;display:grid;place-items:center;font-size:1rem}
+
+  /* niche bars */
+  .niche{margin-bottom:12px}
+  .niche .r{display:flex;justify-content:space-between;font-size:.9rem;font-weight:600;margin-bottom:4px}
+  .niche .r span{color:var(--slate);font-weight:500;font-size:.82rem}
+  .bar{height:9px;background:var(--bg);border-radius:6px;overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:6px}
+  .b-s{background:linear-gradient(90deg,var(--green),#3fcf7f)}
+  .b-a{background:linear-gradient(90deg,var(--blue),#5b9bff)}
+  .b-b{background:linear-gradient(90deg,var(--gold),#ffd06b)}
+  .tag{display:inline-block;font-size:.66rem;font-weight:800;padding:2px 7px;border-radius:5px;color:#fff;margin-left:6px}
+  .t-s{background:var(--green)}.t-a{background:var(--blue)}.t-b{background:var(--gold);color:#5a4209}
+
+  /* funnel */
+  .funnel{display:flex;flex-direction:column;gap:7px;align-items:center}
+  .fstep{width:100%;text-align:center;color:#fff;font-weight:700;padding:11px;border-radius:9px;font-size:.9rem;position:relative}
+  .fstep small{display:block;font-weight:500;font-size:.74rem;opacity:.9}
+  .f1{background:#2d6cdf;width:100%}.f2{background:#3f7ee6;width:88%}.f3{background:#5a92ea;width:74%}
+  .f4{background:var(--green);width:60%}.f5{background:#17834a;width:46%}
+  .arrow{color:var(--slate);font-size:.9rem}
+
+  /* architecture tree */
+  .tree{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:.82rem;line-height:1.7;color:#2b3a52}
+  .tree .home{color:var(--navy);font-weight:800}
+  .tree .money{color:var(--green);font-weight:700}
+  .tree .c{color:var(--slate)}
+
+  /* monetization */
+  .money-tbl{width:100%;border-collapse:collapse;font-size:.85rem}
+  .money-tbl th{text-align:left;color:var(--slate);font-size:.74rem;text-transform:uppercase;letter-spacing:.4px;padding:6px 8px;border-bottom:2px solid var(--line)}
+  .money-tbl td{padding:9px 8px;border-bottom:1px solid var(--line)}
+  .money-tbl tr:last-child td{border-bottom:0}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+  .star{color:var(--gold)}
+
+  /* roadmap */
+  .road{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .wk{position:relative;padding:0 12px}
+  .wk .hd{font-weight:800;color:#fff;text-align:center;padding:9px;border-radius:9px;font-size:.92rem}
+  .w1{background:#2d6cdf}.w2{background:var(--purple)}.w3{background:var(--gold);color:#5a4209}.w4{background:var(--green)}
+  .wk ul{list-style:none;margin-top:12px;font-size:.82rem;color:#2b3a52}
+  .wk li{padding:6px 0 6px 20px;position:relative}
+  .wk li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+  .wk .goal{margin-top:10px;font-size:.74rem;color:var(--slate);font-style:italic;border-top:1px dashed var(--line);padding-top:8px}
+
+  /* kpi */
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .kpi{background:var(--bg);border-radius:11px;padding:14px;text-align:center}
+  .kpi b{display:block;font-size:1.4rem;color:var(--navy)}
+  .kpi span{font-size:.74rem;color:var(--slate)}
+
+  .stack{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 11px;font-size:.8rem;font-weight:600;color:#2b3a52}
+  .chip b{color:var(--blue)}
+
+  .note{font-size:.78rem;color:var(--slate);margin-top:14px;text-align:center}
+  .foot{margin-top:8px;text-align:center;color:var(--slate);font-size:.8rem}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top">
+    <div>
+      <h1>🎯 Local Lead-Generation Network — Strategy at a Glance</h1>
+      <p>Rank organically (SEO/Local/AEO/GEO) → convert high-intent visitors → sell qualified leads to local businesses.</p>
+    </div>
+    <div style="display:flex;gap:12px">
+      <div class="pill"><b>$75–300</b><span>per restoration lead</span></div>
+      <div class="pill"><b>30 days</b><span>to first buyer</span></div>
+    </div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <h2><span class="ic">🏆</span> Best Niches (ranked by lead value × urgency × ease)</h2>
+      <div class="niche"><div class="r"><div>Water Damage / Restoration <span class="tag t-s">START HERE</span></div><span>$75–300</span></div><div class="bar"><i class="b-s" style="width:98%"></i></div></div>
+      <div class="niche"><div class="r"><div>Mold Remediation <span class="tag t-s">TIER S</span></div><span>$75–250</span></div><div class="bar"><i class="b-s" style="width:90%"></i></div></div>
+      <div class="niche"><div class="r"><div>Roofing <span class="tag t-s">TIER S</span></div><span>$50–200</span></div><div class="bar"><i class="b-s" style="width:88%"></i></div></div>
+      <div class="niche"><div class="r"><div>HVAC <span class="tag t-a">TIER A</span></div><span>$40–150</span></div><div class="bar"><i class="b-a" style="width:80%"></i></div></div>
+      <div class="niche"><div class="r"><div>Plumbing <span class="tag t-a">TIER A</span></div><span>$35–150</span></div><div class="bar"><i class="b-a" style="width:78%"></i></div></div>
+      <div class="niche"><div class="r"><div>Junk Removal <span class="tag t-a">EASY MODE</span></div><span>$20–60</span></div><div class="bar"><i class="b-a" style="width:70%"></i></div></div>
+      <div class="niche"><div class="r"><div>Tree Service / Pest Control <span class="tag t-b">TIER B</span></div><span>$25–120</span></div><div class="bar"><i class="b-b" style="width:62%"></i></div></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="ic">🔻</span> The Lead-Capture Funnel</h2>
+      <div class="funnel">
+        <div class="fstep f1">Organic Traffic<small>SEO · Map Pack · AI citations</small></div>
+        <div class="arrow">▼</div>
+        <div class="fstep f2">Money Page<small>Sticky click-to-call + quote form</small></div>
+        <div class="arrow">▼</div>
+        <div class="fstep f3">Capture<small>Call tracking · form · missed-call text-back</small></div>
+        <div class="arrow">▼</div>
+        <div class="fstep f4">Qualify &amp; Score<small>Service + ZIP + urgency match (0–100)</small></div>
+        <div class="arrow">▼</div>
+        <div class="fstep f5">Sell &amp; Deliver<small>Routed to buyer in &lt; 2 min</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <h2><span class="ic">🗺️</span> Site Architecture (silo × location)</h2>
+      <div class="tree">
+<span class="home">/</span>  <span class="c">Homepage</span><br>
+├─ /services/  <span class="c">hub</span><br>
+│   ├─ /services/water-damage-restoration/<br>
+│   └─ /services/mold-remediation/<br>
+├─ /locations/  <span class="c">hub</span><br>
+│   ├─ /locations/cherry-hill-nj/<br>
+│   └─ /locations/marlton-nj/<br>
+├─ <span class="money">/water-damage-restoration-cherry-hill-nj/</span>  ★<br>
+├─ <span class="money">/water-damage-restoration-marlton-nj/</span>  ★<br>
+├─ /resources/  <span class="c">cost guides, how-to (AEO/GEO)</span><br>
+├─ /compare/  <span class="c">X vs Y tables</span><br>
+├─ /reviews/   /about/   /faq/<br>
+└─ /get-a-quote/   /thank-you/
+      </div>
+      <div class="note">★ = exact-match "money pages" — highest commercial intent, win "[service] in [city]"</div>
+    </div>
+
+    <div class="card">
+      <h2><span class="ic">💰</span> Monetization — start low-risk, scale to MRR</h2>
+      <table class="money-tbl">
+        <tr><th>Model</th><th>Per-lead $</th><th>Best for</th></tr>
+        <tr><td><span class="dot" style="background:var(--green)"></span><b>Pay-per-lead</b> <span class="star">★ start</span></td><td>$ each</td><td>Day one, low risk</td></tr>
+        <tr><td><span class="dot" style="background:var(--blue)"></span>Exclusive leads</td><td>$$ premium</td><td>High-ticket niches</td></tr>
+        <tr><td><span class="dot" style="background:var(--gold)"></span>Shared leads</td><td>$ ×2–4</td><td>High-volume/urgent</td></tr>
+        <tr><td><span class="dot" style="background:var(--purple)"></span>Monthly retainer</td><td>flat MRR</td><td>After proving volume</td></tr>
+        <tr><td><span class="dot" style="background:var(--navy)"></span><b>Rank &amp; rent</b> <span class="star">★ goal</span></td><td>rent/mo</td><td>The asset end-state</td></tr>
+      </table>
+      <div class="note">Path: free trial leads → $/qualified lead → retainer → rank-and-rent (one site = one rent check)</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="ic">📅</span> 30-Day Launch Roadmap</h2>
+    <div class="road">
+      <div class="wk"><div class="hd w1">Week 1 · Validate</div><ul>
+        <li>Pick niche + metro</li><li>Score &amp; audit cities</li><li>Domain + hosting + tracking</li><li>LLC + real phone</li>
+        <li class="goal">Gate: 1 anchor city chosen</li></ul></div>
+      <div class="wk"><div class="hd w2">Week 2 · Build 20 pages</div><ul>
+        <li>Homepage + service pages</li><li>5 city money pages</li><li>Forms + click-to-call</li><li>Schema + internal links</li>
+        <li class="goal">Gate: 20 pages live</li></ul></div>
+      <div class="wk"><div class="hd w3">Week 3 · Index &amp; expand</div><ul>
+        <li>Sitemap + GBP + citations</li><li>+5–10 more pages</li><li>Rank + map tracking</li><li>Test full automation</li>
+        <li class="goal">Gate: indexed, impressions</li></ul></div>
+      <div class="wk"><div class="hd w4">Week 4 · First leads/buyer</div><ul>
+        <li>Build lead buffer</li><li>Loom audit + outreach 20–40</li><li>Free-trial-leads offer</li><li>Convert to paid</li>
+        <li class="goal">Gate: 1 paying buyer 🎉</li></ul></div>
+    </div>
+  </div>
+
+  <div class="grid g3">
+    <div class="card">
+      <h2><span class="ic">🔍</span> SEO / AEO / GEO</h2>
+      <div class="stack">
+        <span class="chip">"[service] <b>near me</b>"</span>
+        <span class="chip">"[service] <b>in [city]</b>"</span>
+        <span class="chip">"<b>best</b> [service] [city]"</span>
+        <span class="chip">"<b>emergency</b> [service]"</span>
+        <span class="chip">"[service] <b>cost</b>"</span>
+      </div>
+      <div style="margin-top:12px;font-size:.84rem;color:#2b3a52">
+        <b>Win AI search with:</b> 40–55 word direct-answer blocks, definitions, numbered steps, comparison tables, FAQ schema, entity-rich copy, "key takeaways" summaries.
+      </div>
+    </div>
+    <div class="card">
+      <h2><span class="ic">🛠️</span> Lean Tech Stack</h2>
+      <div class="stack">
+        <span class="chip">WordPress / GHL</span><span class="chip">CallRail</span>
+        <span class="chip">Airtable CRM</span><span class="chip">Make / n8n</span>
+        <span class="chip">Twilio SMS</span><span class="chip">Stripe</span>
+        <span class="chip">GA4 + GSC</span><span class="chip">Looker Studio</span>
+        <span class="chip">Local Falcon</span>
+      </div>
+      <div class="note" style="text-align:left">~$150–300/mo to start · scales per site</div>
+    </div>
+    <div class="card">
+      <h2><span class="ic">📊</span> KPIs to Track</h2>
+      <div class="kpis">
+        <div class="kpi"><b>Rank</b><span>Top-3 organic + map</span></div>
+        <div class="kpi"><b>CPL</b><span>cost per lead</span></div>
+        <div class="kpi"><b>%</b><span>qualified rate</span></div>
+        <div class="kpi"><b>Close</b><span>buyer close rate</span></div>
+        <div class="kpi"><b>$/lead</b><span>revenue per lead</span></div>
+        <div class="kpi"><b>MRR</b><span>+ retention</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">Aetherlex · Local Lead-Gen Strategy Kit · Build on real entity + real reviews + truthful, locally-useful content (compliant = what ranks best).</div>
+</div>
+</body>
+</html>
