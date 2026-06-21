@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elevator Maintenance & Repair | Vertex Elevator Co. (Mockup)</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--navy:#0f2740;--navy2:#16365a;--blue:#1f6feb;--red:#e23b3b;--red2:#c42f2f;--ink:#1a2230;--slate:#52617a;--line:#e3e8ef;--bg:#f5f7fb;--gold:#f2b134;--green:#1f9d57}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.55}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:8px;font-weight:700;text-decoration:none;cursor:pointer;border:0}
+  .btn-call{background:var(--red);color:#fff;padding:13px 20px;box-shadow:0 6px 18px rgba(226,59,59,.3)}
+  .btn-quote{background:var(--gold);color:#1a1a1a;padding:13px 20px}
+  .util{background:var(--navy);color:#cdd9ea;font-size:.82rem}
+  .util .wrap{display:flex;justify-content:space-between;align-items:center;padding:7px 28px}
+  .util .badge{color:var(--gold);font-weight:700}
+  header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:20}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;padding:13px 28px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem;color:var(--navy);text-decoration:none}
+  .logo .mark{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--navy));display:grid;place-items:center;color:#fff}
+  nav{display:flex;gap:20px;align-items:center;font-weight:600;color:var(--slate);font-size:.92rem}
+  nav a{color:inherit;text-decoration:none}
+  nav a.active{color:var(--navy);border-bottom:2px solid var(--blue);padding-bottom:3px}
+  .hphone{font-weight:800;color:var(--navy)}
+  .crumb{background:var(--bg);border-bottom:1px solid var(--line);font-size:.82rem;color:var(--slate)}
+  .crumb .wrap{padding:11px 28px}
+  .crumb a{color:var(--blue);text-decoration:none}
+
+  .shero{background:linear-gradient(120deg,var(--navy),#1d4e82);color:#fff;padding:42px 0}
+  .shero h1{font-size:2.2rem;line-height:1.12;letter-spacing:-.4px}
+  .shero p{color:#d7e3f4;margin-top:10px;max-width:660px;font-size:1.04rem}
+  .shero .row{display:flex;gap:13px;margin-top:20px;flex-wrap:wrap}
+  .shero .trust{display:flex;gap:18px;margin-top:16px;font-size:.88rem;color:#e7eefa;flex-wrap:wrap}
+  .stars{color:var(--gold)}
+
+  .layout{display:grid;grid-template-columns:1fr 320px;gap:36px;padding:40px 0}
+  .content h2{color:var(--navy);font-size:1.5rem;margin:28px 0 12px}
+  .content h2:first-child{margin-top:0}
+  .content p{color:#2b3a52;margin-bottom:12px}
+  .content ul{margin:0 0 14px 20px;color:#2b3a52}
+  .content li{margin-bottom:6px}
+
+  .answer{background:#eef4ff;border-left:5px solid var(--blue);border-radius:10px;padding:20px 22px;margin:6px 0 8px}
+  .answer .tag{display:inline-block;background:var(--blue);color:#fff;font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:6px;margin-bottom:9px;letter-spacing:.5px}
+  .answer .q{font-weight:800;color:var(--navy);font-size:1.08rem;margin-bottom:6px}
+
+  .takeaways{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin:8px 0}
+  .takeaways h3{color:var(--navy);font-size:1rem;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .takeaways ul{list-style:none;margin:0}
+  .takeaways li{padding-left:24px;position:relative;margin-bottom:7px;color:#2b3a52;font-size:.94rem}
+  .takeaways li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+
+  .steps{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:6px 0 10px}
+  .stepc{border:1px solid var(--line);border-radius:12px;padding:16px}
+  .stepc .n{width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;margin-bottom:8px;font-size:.9rem}
+  .stepc h4{color:var(--navy);font-size:1rem}
+  .stepc p{font-size:.86rem;margin:4px 0 0}
+
+  table.cost{width:100%;border-collapse:collapse;margin:8px 0 14px;font-size:.92rem}
+  table.cost th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-size:.82rem}
+  table.cost td{padding:10px 12px;border-bottom:1px solid var(--line)}
+  table.cost tr:nth-child(even) td{background:var(--bg)}
+
+  .citylinks{display:flex;flex-wrap:wrap;gap:9px;margin:6px 0 8px}
+  .citylinks a{background:#eaf2ff;color:var(--blue);font-weight:700;font-size:.86rem;padding:8px 13px;border-radius:8px;text-decoration:none}
+
+  .faq{border:1px solid var(--line);border-radius:11px;padding:15px 18px;margin-bottom:10px}
+  .faq h4{color:var(--navy);font-size:.98rem;display:flex;justify-content:space-between}
+  .faq h4 .pl{color:var(--blue)}
+  .faq p{font-size:.9rem;color:var(--slate);margin:7px 0 0}
+
+  .side{position:sticky;top:74px;align-self:start}
+  .quote{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 16px 40px rgba(8,20,40,.1)}
+  .quote .step{font-size:.74rem;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .quote h3{color:var(--navy);font-size:1.12rem;margin:3px 0 4px}
+  .field{margin-top:10px}
+  .field label{display:block;font-size:.78rem;font-weight:700;color:var(--slate);margin-bottom:4px}
+  .field input,.field select{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);font-size:.92rem}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{border:1px solid var(--line);background:var(--bg);border-radius:7px;padding:8px 10px;font-size:.8rem;font-weight:600;color:var(--slate)}
+  .chip.sel{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .quote .submit{width:100%;justify-content:center;margin-top:13px;background:var(--red);color:#fff;padding:12px}
+  .sidecall{background:var(--navy);color:#fff;border-radius:14px;padding:18px;text-align:center;margin-top:14px}
+  .sidecall b{font-size:1.3rem;display:block;color:var(--gold)}
+  .badges{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:14px;font-size:.85rem;color:#2b3a52}
+  .badges div{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+
+  .ctaband{background:linear-gradient(120deg,var(--red),var(--red2));color:#fff;text-align:center;padding:40px 28px}
+  .ctaband h2{font-size:1.7rem}.ctaband p{color:#ffe2e2;margin-top:6px}
+  .ctaband .row{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+  .ctaband .btn-quote{background:#fff;color:var(--red2)}
+  footer{background:#0b1b2d;color:#9fb3cc;padding:34px 28px;font-size:.86rem}
+  footer .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:26px;max-width:1040px;margin:0 auto}
+  footer h5{color:#fff;margin-bottom:11px;font-size:.92rem}
+  footer a{color:#9fb3cc;text-decoration:none;display:block;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="util"><div class="wrap">
+  <div>🏢 Serving all of Newark &amp; Essex County, NJ</div>
+  <div><span class="badge">★ 4.9</span> | NJ-Licensed Mechanics | ASME A17.1 | 24/7 Entrapment Response</div>
+</div></div>
+
+<header><div class="wrap">
+  <a class="logo" href="homepage-mockup.html"><div class="mark">VE</div> Vertex Elevator Co.</a>
+  <nav>
+    <a href="service-page-mockup.html" class="active">Services</a>
+    <a href="city-page-mockup.html">Service Areas</a>
+    <a href="homepage-mockup.html">Industries</a>
+    <a href="homepage-mockup.html">About</a>
+    <span class="hphone">📞 (973) 555-0142</span>
+    <a class="btn btn-quote" style="padding:9px 14px;font-size:.9rem">Free Quote</a>
+  </nav>
+</div></header>
+
+<div class="crumb"><div class="wrap">
+  <a href="homepage-mockup.html">Home</a> › <a href="service-page-mockup.html">Services</a> › <strong>Elevator Maintenance &amp; Repair</strong>
+</div></div>
+
+<section class="shero"><div class="wrap">
+  <h1>Elevator Maintenance &amp; Repair in Newark, NJ</h1>
+  <p>Preventive maintenance contracts, 24/7 emergency repair, and code-compliant service for commercial and residential buildings across Essex County — with full NJ DCA inspection support.</p>
+  <div class="row">
+    <a class="btn btn-call">📞 Call (973) 555-0142</a>
+    <a class="btn btn-quote">Request a Free Quote</a>
+  </div>
+  <div class="trust">
+    <span><span class="stars">★★★★★</span> 4.9 (86 reviews)</span>
+    <span>✓ 60–90 min emergency response</span>
+    <span>✓ Cat 1 &amp; Cat 5 testing</span>
+    <span>✓ 20+ years</span>
+  </div>
+</div></section>
+
+<div class="wrap"><div class="layout">
+  <div class="content">
+    <div class="answer">
+      <span class="tag">AI / FEATURED-SNIPPET ANSWER</span>
+      <div class="q">What does an elevator maintenance company do?</div>
+      <p style="margin:0">An elevator maintenance company provides scheduled preventive maintenance, emergency repairs, safety testing, and equipment modernization to keep building elevators running safely and in compliance with the ASME A17.1 safety code. Services include lubrication and adjustment, parts replacement, 24/7 entrapment response, and support for state-required Category 1 and Category 5 inspections.</p>
+    </div>
+
+    <div class="takeaways">
+      <h3>⭐ Key Takeaways</h3>
+      <ul>
+        <li>24/7 emergency &amp; entrapment response across Newark / Essex County</li>
+        <li>Preventive maintenance contracts (traction &amp; hydraulic)</li>
+        <li>Typical cost: $300–$1,200 per elevator / month</li>
+        <li>NJ DCA Category 1 &amp; Category 5 inspection support</li>
+      </ul>
+    </div>
+
+    <h2>What's Included in Our Service</h2>
+    <ul>
+      <li>Scheduled preventive maintenance &amp; safety adjustments</li>
+      <li>24/7 emergency repair and entrapment response</li>
+      <li>Traction &amp; hydraulic elevator diagnostics and parts replacement</li>
+      <li>Controller, door operator, and fixture troubleshooting</li>
+      <li>NJ DCA Category 1 (annual) &amp; Category 5 (5-year) test support</li>
+      <li>Violation correction and certificate compliance</li>
+    </ul>
+
+    <h2>How Our Service Process Works</h2>
+    <div class="steps">
+      <div class="stepc"><div class="n">1</div><h4>Free Equipment Survey</h4><p>We assess equipment, history, and open code items.</p></div>
+      <div class="stepc"><div class="n">2</div><h4>Transparent Proposal</h4><p>Clear scope &amp; pricing — no auto-renew traps.</p></div>
+      <div class="stepc"><div class="n">3</div><h4>Seamless Takeover</h4><p>Zero-downtime switch from your current provider.</p></div>
+      <div class="stepc"><div class="n">4</div><h4>Ongoing PMs + 24/7</h4><p>Scheduled service and emergency coverage.</p></div>
+    </div>
+
+    <h2>How Much Does Elevator Service Cost?</h2>
+    <p>Most maintenance contracts run <strong>$300–$1,200 per elevator per month</strong>; repairs and modernization are quoted per scope. We provide line-item proposals — no surprise callback fees.</p>
+    <table class="cost">
+      <tr><th>Service</th><th>Typical range</th></tr>
+      <tr><td>Oil &amp; grease maintenance plan</td><td>$300 – $600 / elevator / mo</td></tr>
+      <tr><td>Full-service (parts-inclusive) plan</td><td>$700 – $1,200 / elevator / mo</td></tr>
+      <tr><td>Modernization (per unit)</td><td>$45,000 – $200,000+</td></tr>
+    </table>
+
+    <h2>Where We Provide This Service</h2>
+    <p>Dedicated local pages (your "money pages") for every area we serve:</p>
+    <div class="citylinks">
+      <a href="city-page-mockup.html">Newark →</a>
+      <a href="city-page-mockup.html">East Orange →</a>
+      <a href="city-page-mockup.html">Irvington →</a>
+      <a href="city-page-mockup.html">Montclair →</a>
+      <a href="city-page-mockup.html">Bloomfield →</a>
+      <a href="city-page-mockup.html">Harrison →</a>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq"><h4>How fast do you respond to an entrapment? <span class="pl">+</span></h4><p>We dispatch licensed mechanics 24/7 and typically reach Newark buildings within 60–90 minutes.</p></div>
+    <div class="faq"><h4>Do you support NJ DCA inspections? <span class="pl">+</span></h4><p>Yes — we schedule and witness Category 1 and Category 5 tests and correct any violations to keep certificates current.</p></div>
+    <div class="faq"><h4>Can you take over from our current provider? <span class="pl">+</span></h4><p>Yes. We manage a clean, zero-downtime takeover, including records transfer and an initial equipment survey.</p></div>
+  </div>
+
+  <aside class="side">
+    <div class="quote">
+      <div class="step">Step 1 of 3 · Free quote</div>
+      <h3>Request Service</h3>
+      <div class="field"><label>Service needed</label>
+        <div class="chips"><span class="chip sel">Maintenance</span><span class="chip">Repair</span><span class="chip">Modernize</span></div></div>
+      <div class="field"><label>Elevator out of service?</label>
+        <div class="chips"><span class="chip sel">Yes</span><span class="chip">No</span></div></div>
+      <div class="field"><label>Building type</label>
+        <select><option>Commercial office</option><option>Residential high-rise</option><option>Hotel</option><option>Hospital / medical</option></select></div>
+      <div class="field"><label>Work phone</label><input placeholder="(973) 555-0123"></div>
+      <button class="btn submit">Get My Free Quote →</button>
+    </div>
+    <div class="sidecall">Elevator down? Call now<br><b>(973) 555-0142</b><span style="font-size:.8rem;color:#cdd9ea">24/7 · 60–90 min response</span></div>
+    <div class="badges">
+      <div>🏅 NJ-Licensed Elevator Mechanics</div>
+      <div>📋 ASME A17.1 Compliant</div>
+      <div>📑 NJ DCA Inspection Support</div>
+      <div>⭐ 4.9 / 5 · 86 reviews</div>
+    </div>
+  </aside>
+</div></div>
+
+<section class="ctaband">
+  <h2>Need Dependable Elevator Service in Newark?</h2>
+  <p>24/7 emergency response · NJ-licensed mechanics · Transparent contracts</p>
+  <div class="row">
+    <a class="btn btn-call" style="background:#fff;color:var(--red2)">📞 Call (973) 555-0142</a>
+    <a class="btn btn-quote">Request a Free Quote</a>
+  </div>
+</section>
+
+<footer><div class="grid">
+  <div><a class="logo" href="homepage-mockup.html" style="color:#fff;margin-bottom:10px"><div class="mark">VE</div> Vertex Elevator</a>
+    <div style="color:#cdd9ea">744 Broad St, Newark, NJ 07102<br>📞 (973) 555-0142 · 24/7 Emergency</div></div>
+  <div><h5>Services</h5><a href="service-page-mockup.html">Maintenance Contracts</a><a href="service-page-mockup.html">Repairs &amp; Emergency</a><a href="service-page-mockup.html">Modernization</a></div>
+  <div><h5>Service Areas</h5><a href="city-page-mockup.html">Newark</a><a href="city-page-mockup.html">East Orange</a><a href="city-page-mockup.html">Montclair</a></div>
+  <div><h5>Company</h5><a href="homepage-mockup.html">About</a><a href="homepage-mockup.html">Industries</a><a href="homepage-mockup.html">Contact</a></div>
+</div></footer>
+</body>
+</html>

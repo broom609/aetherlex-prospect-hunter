@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elevator Service in Newark, NJ | Vertex Elevator Co. (Mockup)</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--navy:#0f2740;--blue:#1f6feb;--red:#e23b3b;--red2:#c42f2f;--ink:#1a2230;--slate:#52617a;--line:#e3e8ef;--bg:#f5f7fb;--gold:#f2b134;--green:#1f9d57}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.55}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:8px;font-weight:700;text-decoration:none;cursor:pointer;border:0}
+  .btn-call{background:var(--red);color:#fff;padding:13px 20px;box-shadow:0 6px 18px rgba(226,59,59,.3)}
+  .btn-quote{background:var(--gold);color:#1a1a1a;padding:13px 20px}
+  .util{background:var(--navy);color:#cdd9ea;font-size:.82rem}
+  .util .wrap{display:flex;justify-content:space-between;align-items:center;padding:7px 28px}
+  .util .badge{color:var(--gold);font-weight:700}
+  .ribbon{background:var(--red);color:#fff;text-align:center;font-weight:700;font-size:.86rem;padding:7px}
+  header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:20}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;padding:13px 28px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem;color:var(--navy);text-decoration:none}
+  .logo .mark{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--navy));display:grid;place-items:center;color:#fff}
+  nav{display:flex;gap:20px;align-items:center;font-weight:600;color:var(--slate);font-size:.92rem}
+  nav a{color:inherit;text-decoration:none}
+  nav a.active{color:var(--navy);border-bottom:2px solid var(--blue);padding-bottom:3px}
+  .hphone{font-weight:800;color:var(--navy)}
+  .crumb{background:var(--bg);border-bottom:1px solid var(--line);font-size:.82rem;color:var(--slate)}
+  .crumb .wrap{padding:11px 28px}
+  .crumb a{color:var(--blue);text-decoration:none}
+
+  .shero{background:linear-gradient(120deg,var(--navy),#1d4e82);color:#fff;padding:40px 0;position:relative;overflow:hidden}
+  .shero:after{content:"";position:absolute;right:-100px;top:-60px;width:420px;height:420px;background:radial-gradient(circle,rgba(31,111,235,.4),transparent 60%)}
+  .shero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.3fr .85fr;gap:34px;align-items:center}
+  .pin-eyebrow{display:inline-flex;gap:7px;align-items:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:5px 12px;border-radius:999px;font-size:.78rem;font-weight:700}
+  .shero h1{font-size:2.2rem;line-height:1.12;margin:14px 0 10px;letter-spacing:-.4px}
+  .shero h1 span{color:var(--gold)}
+  .shero p{color:#d7e3f4;font-size:1.02rem;max-width:540px}
+  .shero .row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+  .stars{color:var(--gold)}
+  .miniform{background:#fff;color:var(--ink);border-radius:14px;padding:18px;box-shadow:0 18px 46px rgba(8,20,40,.3)}
+  .miniform .step{font-size:.72rem;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .miniform h3{color:var(--navy);font-size:1.1rem;margin:2px 0 6px}
+  .field{margin-top:9px}.field label{display:block;font-size:.76rem;font-weight:700;color:var(--slate);margin-bottom:4px}
+  .field input,.field select{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);font-size:.92rem}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}.chip{border:1px solid var(--line);background:var(--bg);border-radius:7px;padding:7px 9px;font-size:.78rem;font-weight:600;color:var(--slate)}
+  .chip.sel{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .miniform .submit{width:100%;justify-content:center;margin-top:11px;background:var(--red);color:#fff;padding:11px}
+
+  section{padding:34px 0}
+  h2{color:var(--navy);font-size:1.45rem;margin-bottom:12px}
+  p{color:#2b3a52;margin-bottom:12px}
+  .answer{background:#eef4ff;border-left:5px solid var(--blue);border-radius:10px;padding:20px 22px}
+  .answer .tag{display:inline-block;background:var(--blue);color:#fff;font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:6px;margin-bottom:9px;letter-spacing:.5px}
+  .answer .q{font-weight:800;color:var(--navy);font-size:1.05rem;margin-bottom:6px}
+  .answer p{margin:0}
+
+  .local{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+  .local h2{margin-top:0}
+  .local .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+  .local .fact{background:#fff;border:1px solid var(--line);border-radius:9px;padding:11px 13px;font-size:.9rem}
+  .local .fact b{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.3px;color:var(--blue)}
+  .hood{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+  .hood span{background:#eaf2ff;color:var(--blue);font-weight:600;font-size:.82rem;padding:6px 11px;border-radius:7px}
+
+  .revs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  .rev{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .rev .stars{font-size:.95rem;margin-bottom:6px}.rev p{font-size:.86rem}
+  .rev .who{margin-top:9px;font-weight:700;color:var(--navy);font-size:.85rem}.rev .who span{display:block;font-weight:500;color:var(--slate);font-size:.76rem}
+
+  .maprow{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+  .mapbox{height:260px;border-radius:14px;background:linear-gradient(135deg,#22456e,#2d5b8f);position:relative;overflow:hidden;border:1px solid var(--line)}
+  .mapbox .pin{position:absolute;width:13px;height:13px;background:var(--red);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 6px rgba(226,59,59,.25)}
+  .mapbox .lbl{position:absolute;bottom:12px;left:12px;background:rgba(15,39,64,.85);color:#fff;padding:5px 11px;border-radius:7px;font-size:.8rem;font-weight:600}
+  .nearby{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}
+  .nearby a{background:#eaf2ff;color:var(--blue);font-weight:700;font-size:.85rem;padding:8px 12px;border-radius:8px;text-decoration:none}
+
+  .faq{border:1px solid var(--line);border-radius:11px;padding:15px 18px;margin-bottom:10px}
+  .faq h4{color:var(--navy);font-size:.97rem;display:flex;justify-content:space-between}.faq h4 .pl{color:var(--blue)}
+  .faq p{font-size:.89rem;color:var(--slate);margin:7px 0 0}
+
+  .ctaband{background:linear-gradient(120deg,var(--red),var(--red2));color:#fff;text-align:center;padding:40px 28px}
+  .ctaband h2{font-size:1.7rem;color:#fff}.ctaband p{color:#ffe2e2;margin-top:6px}
+  .ctaband .row{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+  .ctaband .btn-quote{background:#fff;color:var(--red2)}
+  footer{background:#0b1b2d;color:#9fb3cc;padding:34px 28px;font-size:.86rem}
+  footer .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:26px;max-width:1040px;margin:0 auto}
+  footer h5{color:#fff;margin-bottom:11px;font-size:.92rem}footer a{color:#9fb3cc;text-decoration:none;display:block;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="util"><div class="wrap">
+  <div>🏢 Serving Downtown Newark, the Ironbound &amp; all Essex County</div>
+  <div><span class="badge">★ 4.9</span> | NJ-Licensed Mechanics | ASME A17.1 | 24/7 Response</div>
+</div></div>
+<div class="ribbon">🛗 24/7 EMERGENCY — Elevator down or trapped passenger in Newark? Mechanics dispatched now. Call (973) 555-0142</div>
+
+<header><div class="wrap">
+  <a class="logo" href="homepage-mockup.html"><div class="mark">VE</div> Vertex Elevator Co.</a>
+  <nav>
+    <a href="service-page-mockup.html">Services</a>
+    <a href="city-page-mockup.html" class="active">Service Areas</a>
+    <a href="homepage-mockup.html">Industries</a>
+    <a href="homepage-mockup.html">About</a>
+    <span class="hphone">📞 (973) 555-0142</span>
+    <a class="btn btn-quote" style="padding:9px 14px;font-size:.9rem">Free Quote</a>
+  </nav>
+</div></header>
+
+<div class="crumb"><div class="wrap">
+  <a href="homepage-mockup.html">Home</a> › <a href="city-page-mockup.html">Service Areas</a> › <strong>Newark, NJ</strong>
+</div></div>
+
+<section class="shero" style="padding-top:34px"><div class="wrap">
+  <div>
+    <span class="pin-eyebrow">📍 NEWARK · ESSEX COUNTY · NORTH JERSEY</span>
+    <h1>Elevator Service &amp; Repair in <span>Newark, NJ</span></h1>
+    <p>Maintenance contracts, 24/7 emergency repair, and modernization for Newark's office towers, condos, hotels, and institutional buildings — with full NJ DCA inspection support.</p>
+    <div class="row">
+      <a class="btn btn-call">📞 Call (973) 555-0142</a>
+      <a class="btn btn-quote">Request a Free Quote</a>
+    </div>
+    <div style="margin-top:14px;color:#e7eefa;font-size:.88rem"><span class="stars">★★★★★</span> 4.9 · 41 reviews from Newark property managers</div>
+  </div>
+  <div class="miniform">
+    <div class="step">Step 1 of 3 · Newark service quote</div>
+    <h3>Request Service in Newark</h3>
+    <div class="field"><label>Elevator out of service?</label><div class="chips"><span class="chip sel">Yes — urgent</span><span class="chip">No</span></div></div>
+    <div class="field"><label>Building type</label>
+      <select><option>Commercial office</option><option>Residential high-rise / condo</option><option>Hotel</option><option>Municipal / institutional</option></select></div>
+    <div class="field"><label>Work phone</label><input placeholder="(973) 555-0123"></div>
+    <button class="btn submit">Get My Free Quote →</button>
+  </div>
+</div></section>
+
+<div class="wrap">
+  <section style="padding-top:30px">
+    <div class="answer">
+      <span class="tag">AI / FEATURED-SNIPPET ANSWER</span>
+      <div class="q">Who provides elevator service in Newark, NJ?</div>
+      <p>Vertex Elevator Co. provides 24/7 elevator maintenance, repair, and modernization in Newark, NJ, with 60–90 minute emergency response across Essex County. NJ-licensed mechanics service traction and hydraulic elevators in Downtown/Central Business District office towers, Ironbound mixed-use buildings, and University Heights high-rises, and support NJ DCA Category 1 and Category 5 inspections.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="local">
+      <h2>Elevator Service in Newark: What Building Owners Should Know</h2>
+      <p>Newark has one of New Jersey's densest concentrations of mid- and high-rise buildings — from the Downtown/Central Business District office towers along Broad and Market Streets to aging residential high-rises in University Heights and mixed-use properties in the Ironbound. Many run older traction and hydraulic equipment where deferred maintenance leads to entrapments and failed NJ DCA inspections. Fast local response and proactive code compliance matter more here than anywhere else in Essex County.</p>
+      <div class="grid">
+        <div class="fact"><b>Response time</b>60–90 min to Downtown Newark</div>
+        <div class="fact"><b>Common issue</b>Aging controllers · door faults</div>
+        <div class="fact"><b>Compliance</b>NJ DCA Cat 1 &amp; Cat 5 testing</div>
+        <div class="fact"><b>Buildings serviced</b>150+ across Newark</div>
+      </div>
+      <p style="margin:14px 0 4px;font-weight:600;color:var(--navy)">Newark districts we serve:</p>
+      <div class="hood"><span>Downtown / CBD</span><span>Ironbound</span><span>University Heights</span><span>Forest Hill</span><span>Newark Penn Station area</span><span>Springfield/Belmont</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What Newark Property Managers Say</h2>
+    <div class="revs">
+      <div class="rev"><div class="stars">★★★★★</div><p>"Two Broad Street towers, zero downtime since switching. They passed our Cat 5 full-load test first try."</p><div class="who">Asset Manager<span>Downtown Newark · Verified</span></div></div>
+      <div class="rev"><div class="stars">★★★★★</div><p>"Our Ironbound building had constant entrapments. Vertex modernized the controller and it's been flawless."</p><div class="who">Building Owner<span>Ironbound, Newark · Verified</span></div></div>
+      <div class="rev"><div class="stars">★★★★★</div><p>"They actually answer at 2am and handle all our DCA paperwork. Worth every dollar."</p><div class="who">Facilities Director<span>University Heights · Verified</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Serving Newark &amp; Surrounding Essex County</h2>
+    <div class="maprow">
+      <div class="mapbox"><div class="pin" style="top:45%;left:50%"></div><div class="lbl">📍 Newark, NJ (Essex County)</div></div>
+      <div>
+        <p>Headquartered in Downtown Newark, we cover the surrounding North Jersey market with the same 24/7 response. Each town has its own dedicated page:</p>
+        <div class="nearby">
+          <a href="city-page-mockup.html">East Orange →</a>
+          <a href="city-page-mockup.html">Irvington →</a>
+          <a href="city-page-mockup.html">Harrison →</a>
+          <a href="city-page-mockup.html">Bloomfield →</a>
+          <a href="city-page-mockup.html">Montclair →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Newark Elevator Service FAQs</h2>
+    <div class="faq"><h4>How fast can you reach a Newark building? <span class="pl">+</span></h4><p>Our mechanics are based in Essex County and typically reach Downtown Newark within 60–90 minutes, 24/7, for entrapments and out-of-service calls.</p></div>
+    <div class="faq"><h4>Do you handle NJ DCA elevator inspections in Newark? <span class="pl">+</span></h4><p>Yes — we schedule and witness Category 1 (annual) and Category 5 (5-year) tests and correct violations to keep your certificates current.</p></div>
+    <div class="faq"><h4>Can you take over our existing maintenance contract? <span class="pl">+</span></h4><p>Yes. We manage a zero-downtime takeover from your current provider, including an initial equipment survey and records transfer.</p></div>
+  </section>
+</div>
+
+<section class="ctaband">
+  <h2>Elevator Trouble in Newark? We're Ready 24/7</h2>
+  <p>60–90 min response · NJ-licensed mechanics · Full DCA inspection support</p>
+  <div class="row">
+    <a class="btn btn-call" style="background:#fff;color:var(--red2)">📞 Call (973) 555-0142</a>
+    <a class="btn btn-quote">Request a Free Quote</a>
+  </div>
+</section>
+
+<footer><div class="grid">
+  <div><a class="logo" href="homepage-mockup.html" style="color:#fff;margin-bottom:10px"><div class="mark">VE</div> Vertex Elevator</a>
+    <div style="color:#cdd9ea">744 Broad St, Newark, NJ 07102<br>📞 (973) 555-0142 · 24/7 Emergency</div></div>
+  <div><h5>Services</h5><a href="service-page-mockup.html">Maintenance Contracts</a><a href="service-page-mockup.html">Repairs &amp; Emergency</a><a href="service-page-mockup.html">Modernization</a></div>
+  <div><h5>Service Areas</h5><a href="city-page-mockup.html">Newark</a><a href="city-page-mockup.html">East Orange</a><a href="city-page-mockup.html">Montclair</a></div>
+  <div><h5>Company</h5><a href="homepage-mockup.html">About</a><a href="homepage-mockup.html">Industries</a><a href="homepage-mockup.html">Contact</a></div>
+</div></footer>
+</body>
+</html>
